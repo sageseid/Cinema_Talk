@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Cinema Talk</string>
+    <string name="mLanguage">Language : </string>
+    <string name="dummydata">this is lorem ipsum content of universe</string>
+    <string name="dummytitle">TITLE </string>
+    <string name="mOverView">Overview :</string>
+    <string name="mVote_Average">Vote Average :</string>
+    <string name="mRelease_Date">Release Date :</string>
+
+</resources>
