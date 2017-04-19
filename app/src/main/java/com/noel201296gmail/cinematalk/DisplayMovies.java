@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,8 +27,14 @@ public class DisplayMovies extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display_movie);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         Intent i = getIntent();
         String Title= i.getStringExtra("title");
+
+
         String Vote = i.getStringExtra("vote_average");
         String Image = i.getStringExtra("backdrop_path");
         String Overview =i.getStringExtra("overview");
@@ -36,7 +44,7 @@ public class DisplayMovies extends AppCompatActivity {
          TextView txtname1 = (TextView) findViewById(R.id.OVERVIEW);
          TextView txtname2 = (TextView) findViewById(R.id.VOTE);
          TextView txtname3 = (TextView) findViewById(R.id.DATE);
-        ImageView imageView1 = (ImageView) findViewById(R.id.IMAGEVIEW);
+         ImageView imageView1 = (ImageView) findViewById(R.id.IMAGEVIEW);
 
 
 
