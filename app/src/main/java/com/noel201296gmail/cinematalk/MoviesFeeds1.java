@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by OMOSEFE NOEL OBASEKI on 08/04/2017.
  */
-public class NewsFeeds1 {
+public class MoviesFeeds1 {
 
     public static final String TMDB_IMAGE_PATH = "http://image.tmdb.org/t/p/w500";
 

@@ -3,7 +3,6 @@ package com.noel201296gmail.cinematalk;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -38,7 +37,7 @@ public class TopRatedMovies extends AppCompatActivity {
     RequestQueue queue;
     String url = "http://api.themoviedb.org/3/movie/top_rated?api_key=b7a6da7f6401f0bad741c3d311b15234";
     RecyclerView recyclerView;
-    List<NewsFeeds1> feedsList = new ArrayList<NewsFeeds1>();
+    List<MoviesFeeds1> feedsList = new ArrayList<MoviesFeeds1>();
     MyRecyclerAdapter adapter;
     private MyRecyclerAdapter.ListItemClickListener onClickListener ;
 
@@ -80,7 +79,7 @@ public class TopRatedMovies extends AppCompatActivity {
 
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                                NewsFeeds1 dataSet = new NewsFeeds1();
+                                MoviesFeeds1 dataSet = new MoviesFeeds1();
                                 dataSet.setPosterPath(jsonObject.getString("poster_path"));
                                 dataSet.setAdult(jsonObject.getBoolean("adult"));
                                 dataSet.setOverview(jsonObject.getString("overview"));

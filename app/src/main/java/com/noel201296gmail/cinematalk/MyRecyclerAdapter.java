@@ -10,7 +10,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.toolbox.NetworkImageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -19,7 +18,7 @@ import java.util.List;
  */
 public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.MyViewHolder> {
 
-    private List<NewsFeeds1> feedsList;
+    private List<MoviesFeeds1> feedsList;
     final private ListItemClickListener mOnClickListener;
     private Context context;
     private LayoutInflater inflater;
@@ -28,7 +27,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
         void onListItemClick(int clickedItemIndex);
     }
 
-    public MyRecyclerAdapter(Context context, List<NewsFeeds1> feedsList, ListItemClickListener onClickListener) {
+    public MyRecyclerAdapter(Context context, List<MoviesFeeds1> feedsList, ListItemClickListener onClickListener) {
 
         this.context = context;
         this.feedsList = feedsList;
@@ -45,14 +44,14 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        NewsFeeds1 feeds = feedsList.get(position);
+        MoviesFeeds1 feeds = feedsList.get(position);
         //Pass the values of feeds object to Views
         holder.content.setText(feeds.getOriginalLanguage());
         Picasso.with(context)
                 .load(feeds.getPosterPath())
                 .placeholder(R.color.colorAccent)
                 .into(holder.imageview);
-        holder.ratingbar.setProgress(feeds.getVoteCount());
+        holder.ratingbar.setProgress(feeds.getVoteAverage().intValue());
         holder.title.setText(feeds.getTitle());
 
     }
@@ -86,7 +85,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
 
         @Override
         public void onClick(View v) {
-         NewsFeeds1 m = feedsList.get(getAdapterPosition());
+         MoviesFeeds1 m = feedsList.get(getAdapterPosition());
             Intent intent = new Intent(context, DisplayMovies.class);
             intent.putExtra("title", m.getTitle());
             intent.putExtra( "backdrop_path",m.getBackdropPath());
