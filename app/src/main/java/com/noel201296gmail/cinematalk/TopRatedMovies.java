@@ -3,16 +3,23 @@ package com.noel201296gmail.cinematalk;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 
@@ -29,7 +36,7 @@ import java.util.List;
 public class TopRatedMovies extends AppCompatActivity {
 
     RequestQueue queue;
-    String url = "http://api.themoviedb.org/3/movie/top_rated?api_key=INSERT_API_KEY_HERE";
+    String url = "http://api.themoviedb.org/3/movie/top_rated?api_key=b7a6da7f6401f0bad741c3d311b15234";
     RecyclerView recyclerView;
     List<NewsFeeds1> feedsList = new ArrayList<NewsFeeds1>();
     MyRecyclerAdapter adapter;
@@ -50,7 +57,7 @@ public class TopRatedMovies extends AppCompatActivity {
         //Getting Instance of Volley Request Queue
         queue = NetworkController.getInstance(this).getRequestQueue();
         //Volley's inbuilt class to make Json array request
-      //  final ProgressDialog loading = ProgressDialog.show(this,"Loading Data", "Please wait...");
+       final ProgressDialog loading = ProgressDialog.show(this,"Loading Data", "Please wait...");
 
 
 
@@ -59,7 +66,7 @@ public class TopRatedMovies extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         //Dismissing progress dialog
-                    //    loading.dismiss();
+                      loading.dismiss();
 
 
 
@@ -102,6 +109,18 @@ public class TopRatedMovies extends AppCompatActivity {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
+                                if (error instanceof NetworkError) {
+                                    Toast.makeText(getApplicationContext(), "Network Error!....Cannot connect to Internet...Please check your connection!", Toast.LENGTH_SHORT).show();
+                                } else if (error instanceof ServerError) {
+                                    Toast.makeText(getApplicationContext(), "Server Side Error!...The server could not be found. Please try again after some time!!", Toast.LENGTH_SHORT).show();
+                                } else if (error instanceof ParseError) {
+                                    Toast.makeText(getApplicationContext(), "Parsing error! Please try again after some time!!", Toast.LENGTH_SHORT).show();
+                                } else if (error instanceof NoConnectionError) {
+                                    Toast.makeText(getApplicationContext(), "Connection Error!.....Cannot connect to Internet...Please check your connection!", Toast.LENGTH_SHORT).show();
+                                } else if (error instanceof TimeoutError) {
+                                    Toast.makeText(getApplicationContext(), "Timeout Error!....Connection TimeOut! Please check your internet connection.", Toast.LENGTH_SHORT).show();
+                                }
+
 
                             }
                         });

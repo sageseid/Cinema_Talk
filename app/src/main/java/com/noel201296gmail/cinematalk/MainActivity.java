@@ -26,7 +26,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     RequestQueue queue;
-    String url = "http://api.themoviedb.org/3/movie/popular?api_key=INSERT_API_KEY_HERE";
+    String url = "http://api.themoviedb.org/3/movie/popular?api_key=b7a6da7f6401f0bad741c3d311b15234";
     RecyclerView recyclerView;
     List<NewsFeeds1> feedsList = new ArrayList<NewsFeeds1>();
     MyRecyclerAdapter adapter;
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         //Getting Instance of Volley Request Queue
         queue = NetworkController.getInstance(this).getRequestQueue();
         //Volley's inbuilt class to make Json array request
-        final ProgressDialog loading = ProgressDialog.show(this,"Loading Data", "Please wait...");
+       final ProgressDialog loading = ProgressDialog.show(this,"Loading Data", "Please wait...");
 
 
 
@@ -113,17 +113,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
         switch (id) {
-            /*
-             * When you click the reset menu item, we want to start all over
-             * and display the pretty gradient again. There are a few similar
-             * ways of doing this, with this one being the simplest of those
-             * ways. (in our humble opinion)
-             */
+
             case R.id.action_top_rated:
 
                 Intent Tr = new Intent(this,TopRatedMovies.class);
