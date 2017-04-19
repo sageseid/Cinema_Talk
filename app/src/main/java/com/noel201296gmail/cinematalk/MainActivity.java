@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         //Getting Instance of Volley Request Queue
         queue = NetworkController.getInstance(this).getRequestQueue();
         //Volley's inbuilt class to make Json array request
-       final ProgressDialog loading = ProgressDialog.show(this,"Loading Data", "Please wait...");
+        final ProgressDialog loading = ProgressDialog.show(this,"Loading Data", "Please wait...");
         loading.setCancelable(true);
 
 
@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         //Dismissing progress dialog
                         loading.dismiss();
-
 
 
                         try {

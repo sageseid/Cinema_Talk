@@ -8,13 +8,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/deadpool"
-        android:layout_above="@+id/textView"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView"
+        android:paddingBottom="50dp"/>
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="85dp"
         android:textSize="35sp"
         android:textColor="#640101"
         android:gravity="center_horizontal"
@@ -22,7 +22,8 @@
         android:textIsSelectable="false"
         android:id="@+id/textView"
         android:textStyle="bold|italic"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp"/>
 
 </RelativeLayout>
