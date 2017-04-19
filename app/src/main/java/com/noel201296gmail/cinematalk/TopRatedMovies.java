@@ -58,6 +58,7 @@ public class TopRatedMovies extends AppCompatActivity {
         queue = NetworkController.getInstance(this).getRequestQueue();
         //Volley's inbuilt class to make Json array request
        final ProgressDialog loading = ProgressDialog.show(this,"Loading Data", "Please wait...");
+        loading.setCancelable(true);
 
 
 
@@ -118,7 +119,7 @@ public class TopRatedMovies extends AppCompatActivity {
                                 } else if (error instanceof NoConnectionError) {
                                     Toast.makeText(getApplicationContext(), "Connection Error!.....Cannot connect to Internet...Please check your connection!", Toast.LENGTH_SHORT).show();
                                 } else if (error instanceof TimeoutError) {
-                                    Toast.makeText(getApplicationContext(), "Timeout Error!....Connection TimeOut! Please check your internet connection.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Timeout Error!....Connection TimeOut! Please check your internet connect   ion.", Toast.LENGTH_SHORT).show();
                                 }
 
 
